@@ -1,4 +1,5 @@
 ﻿using Lista_de_exercicio_POO.Models;
+using Lista_de_exercicio_POO.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,18 +18,30 @@ namespace Lista_de_exercicio_POO.Controller
         {
             if (Double.TryParse(input, out double valorConvertido))
             {
-                //cria instancia da classe circulo class
-                CirculoClass circulo = new CirculoClass(valorConvertido);
+                try
+                {
+                    //cria instancia da classe circulo class
+                    CirculoClass circulo = new CirculoClass(valorConvertido);
+                    string resultado = $"Área:{circulo.CalcularArea():F2}\nPerimetro:{circulo.CalcularPerimetro()}";
 
+                    return (resultado, funcUtils.ObterIcone(resultado));
 
-                string resultado = $"Área:{circulo.CalcularArea()}\nPerimetro:{circulo.CalcularPerimetro()}";
+                }
 
+                catch (ArgumentException ex)
+                {
 
+                    string msg = $"Error: {ex.Message}";
+                    return (msg, funcUtils.ObterIcone(msg));
+                    
 
+                }
             }
+
             else
             {
-                //
+                string msgerro = "Erro: O valor digitado não é um número valido";
+                return (msgerro, funcUtils.ObterIcone(msgerro));
 
             }
             

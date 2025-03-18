@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Controller\CirculoController.cs" />
     <Compile Include="Models\CirculoClass.cs" />
+    <Compile Include="Utils\funcUtils.cs" />
     <Compile Include="view\ViewCirculo.cs">
       <SubType>Form</SubType>
     </Compile>
